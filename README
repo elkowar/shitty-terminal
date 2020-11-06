@@ -1,0 +1,18 @@
+st - simple terminal
+
+st is a simple terminal emulator for X.
+
+Enter the following command to build and install st (if necessary as root):
+
+    make clean install
+
+My fork has support for:
+                    Xresources
+                    ligatures
+                    scrollback
+                    colored emojis
+                    w3m image previews
+                    second font
+                    external pipe and more.
+
+Unfortunately I could not patch it for transparency. ¯\_(ツ)_/¯
