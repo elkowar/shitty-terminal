@@ -252,6 +252,8 @@ static Shortcut shortcuts[] = {
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
     { MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
+    { MODKEY,               XK_4,           zoom,           {.f = +2}},
+    { MODKEY,               XK_3,           zoom,           {.f = -2}},
 };
 
 /*
