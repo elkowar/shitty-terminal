@@ -256,6 +256,7 @@ static Shortcut shortcuts[] = {
     { MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
     { MODKEY,               XK_4,           zoom,           {.f = +2}},
     { MODKEY,               XK_3,           zoom,           {.f = -2}},
+    { TERMMOD,              XK_Return,      newterm,        {}},
 };
 
 /*

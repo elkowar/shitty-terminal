@@ -3,3 +3,5 @@ st
 pkg/
 *.pkg.tar.xz
 config.h
+*.orig
+*.rej
