@@ -5,16 +5,18 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Terminus (TTF):pixelsize=20:antialias=false:autohint=false";
+/*static char *font = "Lerminus:pixelsize=20:antialias=false:autohint=false";*/
 /* Spare fonts */
-static char *font2[] = { "JoyPixels:pixelsize=16:antialias=true:autohint=true" };
+/*static char *font2[] = { "JoyPixels:pixelsize=16:antialias=true:autohint=true" };*/
+static char *font2[] = {};
 
-static int borderpx = 2;
+static int borderpx = 20;
 
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
- * 2: scroll and/or utmp
+ * 2: scroll and/or utp
  * 3: SHELL environment variable
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
@@ -241,7 +243,7 @@ static Shortcut shortcuts[] = {
 	{ ControlMask,          XK_Print,       toggleprinter,  {.i =  0} },
 	{ ShiftMask,            XK_Print,       printscreen,    {.i =  0} },
 	{ XK_ANY_MOD,           XK_Print,       printsel,       {.i =  0} },
-	{ ControlMask,          XK_equal,       zoom,           {.f = +1} },
+	{ ControlMask,          XK_plus,        zoom,           {.f = +1} },
 	{ ControlMask,          XK_minus,       zoom,           {.f = -1} },
 	{ ControlMask,          XK_0,           zoomreset,      {.f =  0} },
 	{ TERMMOD,              XK_C,           clipcopy,       {.i =  0} },
@@ -595,7 +597,7 @@ static Key key[] = {
 	{ XK_KP_Begin,     Mod1Mask|ControlMask|ShiftMask, "\033[157;8u", 0,  0},
 	{ XK_KP_Begin,     Mod1Mask|ShiftMask,             "\033[157;4u", 0,  0},
 	{ XK_KP_Begin,     ShiftMask,                      "\033[157;2u", 0,  0},
-	{ XK_KP_End,       XK_NO_MOD,                      "\033[4~",     0,  0},
+	{ XK_KP_End,       XK_NO_MOD,                      "\033[F",      0,  0},
 	{ XK_KP_End,       ControlMask|ShiftMask,          "\033[156;6u", 0,  0},
 	{ XK_KP_End,       Mod1Mask,                       "\033[156;3u", 0,  0},
 	{ XK_KP_End,       Mod1Mask|ControlMask,           "\033[156;7u", 0,  0},
@@ -800,7 +802,7 @@ static Key key[] = {
 	{ XK_Home,         Mod1Mask|ControlMask,           "\033[80;7u",  0,  0},
 	{ XK_Home,         Mod1Mask|ControlMask|ShiftMask, "\033[80;8u",  0,  0},
 	{ XK_Home,         Mod1Mask|ShiftMask,             "\033[80;4u",  0,  0},
-	{ XK_End,          XK_NO_MOD,                      "\033[4~",     0,  0},
+	{ XK_End,          XK_NO_MOD,                      "\033[F",      0,  0},
 	{ XK_End,          ControlMask|ShiftMask,          "\033[87;6u",  0,  0},
 	{ XK_End,          Mod1Mask,                       "\033[87;3u",  0,  0},
 	{ XK_End,          Mod1Mask|ControlMask,           "\033[87;7u",  0,  0},
@@ -839,7 +841,7 @@ static Key key[] = {
 	{ XK_Menu,         Mod1Mask|ControlMask|ShiftMask, "\033[103;8u", 0,  0},
 	{ XK_Menu,         Mod1Mask|ShiftMask,             "\033[103;4u", 0,  0},
 	{ XK_Menu,         ShiftMask,                      "\033[103;2u", 0,  0},
-	{ XK_Delete,       XK_NO_MOD,                      "\033[P",     -1,  0},
+	{ XK_Delete,       XK_NO_MOD,                      "\033[3~",    -1,  0},
 	{ XK_Delete,       XK_NO_MOD,                      "\033[3~",    +1,  0},
 	{ XK_Delete,       ControlMask|ShiftMask,          "\033[255;6u", 0,  0},
 	{ XK_Delete,       Mod1Mask,                       "\033[255;3u", 0,  0},
@@ -1095,6 +1097,16 @@ static Key key[] = {
 	{ XK_underscore,   Mod1Mask|ControlMask,           "\033[95;7u",  0,  0},
 	{ XK_underscore,   Mod1Mask|ControlMask|ShiftMask, "\033[95;8u",  0,  0},
 	{ XK_underscore,   Mod1Mask|ShiftMask,             "\033[95;4u",  0,  0},
+
+
+
+	// fix delete being broken
+	{ XK_KP_Delete,     ControlMask,    "\033[M",       -1,    0},
+    { XK_KP_Delete,     ControlMask,    "\033[3;5~",    +1,    0},
+    { XK_KP_Delete,     ShiftMask,      "\033[2K",      -1,    0},
+    { XK_KP_Delete,     ShiftMask,      "\033[3;2~",    +1,    0},
+    { XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      -1,    0},
+    { XK_KP_Delete,     XK_ANY_MOD,     "\033[3~",      +1,    0},
 };
 
 /*
